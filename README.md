@@ -25,6 +25,6 @@ In other cases behaviour is the same with `typeid(...).name()`
 
 ## Todo
 
-[_] Replace `std::__1::` with just `std::`
-[_] `UnDecorateSymbolName` or `__unDName` support for MSVC
-[_] Support different checks in test (now works only with `_GNUC_`)
+- [ ] Replace `std::__1::` with just `std::`
+- [ ] `UnDecorateSymbolName` or `__unDName` support for MSVC
+- [ ] Support different checks in test (now works only with `_GNUC_`)

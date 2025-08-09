@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.10)
 project(
     kdemangle
     VERSION 0.0.0
-    DESCRIPTION "And what"
-    HOMEPAGE_URL ""
+    DESCRIPTION "Header-only C++11 library for demangling"
+    HOMEPAGE_URL "https://github.com/KonstantIMP/kdemangle"
     LANGUAGES CXX
 )
 

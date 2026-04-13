@@ -11,3 +11,5 @@ builddir/
 # macOS
 .DS_Store
 
+# Windows
+.vs/

@@ -16,6 +16,38 @@
 namespace kimp {
 
 
+namespace _private {
+
+inline std::string Normalize(std::string demangled) {
+
+#ifdef __GNUC__
+    for (std::string::size_type pos; (pos = demangled.find("::__1")) != std::string::npos;) {
+        demangled.erase(pos, 5);
+    }
+#endif // __GNUC__
+
+#ifdef _MSC_VER
+    for (const std::string& kw : {"class ", "struct "}) {
+        for (std::string::size_type pos = 0; (pos = demangled.find(kw, pos)) != std::string::npos;) {
+            if (pos == 0 || demangled[pos - 1] == '<' || demangled[pos - 1] == ',' || demangled[pos - 1] == ' ') {
+                demangled.erase(pos, kw.size());
+            } else {
+                pos += kw.size();
+            }
+        }
+    }
+
+    for (std::string::size_type pos; (pos = demangled.find(" >")) != std::string::npos;) {
+        demangled.erase(pos, 1);
+    }
+#endif // _MSC_VER
+
+    return demangled;
+}
+
+} // namespace _private
+
+
 inline std::string Demangle(const char* mangled);
 
 #ifdef __GNUC__
@@ -42,13 +74,13 @@ inline std::string Demangle(const char* mangled) {
         free(demangled_name);
     }
 
-    return result;
+    return _private::Normalize(result);
 }
 
 #else
 
 inline std::string Demangle(const char* mangled) {
-    return std::string { mangled };
+    return _private::Normalize(std::string { mangled });
 }
 
 #endif // __GNUC__

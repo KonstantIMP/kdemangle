@@ -23,8 +23,3 @@ Works with compilers supporting `cxxabi.h` like g++ and clang (checks `_GNUC_` m
 
 In other cases behaviour is the same with `typeid(...).name()`
 
-## Todo
-
-- [ ] Replace `std::__1::` with just `std::`
-- [ ] `UnDecorateSymbolName` or `__unDName` support for MSVC
-- [ ] Support different checks in test (now works only with `_GNUC_`)

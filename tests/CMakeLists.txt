@@ -22,7 +22,7 @@ list(APPEND KDEMANGLE_UNIT_TESTS "stl_demangle_ut")
 foreach(UT ${KDEMANGLE_UNIT_TESTS})
     add_executable(${UT} ${UT}.cpp)
     target_link_libraries(${UT} ${PROJECT_NAME})
-    target_link_libraries(${UT} GTest::gtest_main)
+    target_link_libraries(${UT} GTest::gtest_main GTest::gmock)
 
     gtest_discover_tests(${UT})
 endforeach()

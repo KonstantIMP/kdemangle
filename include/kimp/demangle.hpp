@@ -27,16 +27,6 @@ inline std::string Normalize(std::string demangled) {
 #endif // __GNUC__
 
 #ifdef _MSC_VER
-    for (const std::string& kw : {"class ", "struct "}) {
-        for (std::string::size_type pos = 0; (pos = demangled.find(kw, pos)) != std::string::npos;) {
-            if (pos == 0 || demangled[pos - 1] == '<' || demangled[pos - 1] == ',' || demangled[pos - 1] == ' ') {
-                demangled.erase(pos, kw.size());
-            } else {
-                pos += kw.size();
-            }
-        }
-    }
-
     for (std::string::size_type pos; (pos = demangled.find(" >")) != std::string::npos;) {
         demangled.erase(pos, 1);
     }

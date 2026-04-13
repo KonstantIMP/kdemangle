@@ -13,11 +13,11 @@ TEST(Complex, InnerStructTest) {
 }
 
 
-struct GlobalStruc { };
+struct GlobalStruct { };
 
 TEST(Complex, GlobalStructTest) {
     EXPECT_STREQ(
-        kimp::TypeName<GlobalStruc>().c_str()
+        kimp::TypeName<GlobalStruct>().c_str()
         , "GlobalStruc"
     );
 }
